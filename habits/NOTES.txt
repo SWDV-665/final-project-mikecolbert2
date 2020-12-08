@@ -1,7 +1,9 @@
 Format About page and clean up text copy.
 Configure About to use a {{title}}
 Ensure all other pages are using {{title}}
+
 Streak service should not only validate date, but also on habit
+Or limit to only one habit at a time
 
 Daily Check-in tab - add hyphen
 Refactor code in streak service to make it more modular
