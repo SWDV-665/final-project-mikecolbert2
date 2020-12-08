@@ -1,22 +1,30 @@
-<ion-list>
-    <ion-item-sliding *ngFor="let habit of habits; let i = index">
-      <ion-item>
+Format About page and clean up text copy.
+Configure About to use a {{title}}
+Ensure all other pages are using {{title}}
+Streak service should not only validate date, but also on habit
 
-        <!-- if there is a habit display it. If there is not, show a button to add one. -->
-        <!-- add and remove habits on the about page-->
-      
-        <h1> {{ habit.name }} </h1>
-      </ion-item>
-        <ion-item-options sliding="left">
-          <button ion-button color="secondary">
-            <ion-icon name="checkmark" (click)="didToday(habit)"></ion-icon>
-          </button>
-        </ion-item-options>
-      
-    </ion-item-sliding>
-  </ion-list>
+Daily Check-in tab - add hyphen
+Refactor code in streak service to make it more modular
+Comment:
+streak service
+habit service
+inputDialog service
+other .ts and .html files
+  About
+  Home
+  streak
 
+Ability to edit streak list with datepicker
+Ability to delete a streak item
 
+Format Check-in page and text copy.
+Work on streak days
 
+Add abiltiy to share streak days?
+Add ability to take photo?
+Add reminder at 8:00pm?
 
-  outline style="width:100%; height:30%; text-align:center;"  
+Migrate to Heroku & Mongo
+
+Add multi-user functionality 
+Add validation so no blank habits

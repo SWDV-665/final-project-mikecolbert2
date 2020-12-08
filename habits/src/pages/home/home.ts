@@ -26,4 +26,10 @@ export class HomePage {
     this.streakService.addDaily(habit);
   }
 
+  //MWC placed for testing
+  makeData(){
+    console.log("Adding ... ");
+    this.streakService.makeData();
+  }
+
 }

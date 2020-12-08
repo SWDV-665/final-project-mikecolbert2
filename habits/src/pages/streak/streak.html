@@ -9,10 +9,13 @@
 <ion-content padding>
   <h2>My Streaks</h2>
   <ion-list>
-    <button ion-item *ngFor="let entry of loadDailyEntries(); let i = index">
-     {{ i }}
-     {{ entry.date }}
-     {{ entry.name }}
-    </button>  
+    <ion-item no-lines inset *ngFor="let entry of loadDailyEntries(); let i = index">
+     <span>{{ entry.date | date: 'shortDate' }}</span> --  <!-- from angular, date pipe-->
+     <span style="color:red;" *ngIf="!entry.habit" ><img src="../../assets/icon/delete.png" style="vertical-align: text-bottom;"></span>
+     <span style="color:green; font-weight:bold;" *ngIf="entry.habit">{{entry.habit}}</span>
+     
+     
+    </ion-item>  
   </ion-list>
+
 </ion-content>
