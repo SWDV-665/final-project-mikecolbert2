@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HabitServiceProvider } from '../providers/habit-service/habit-service';
 import { InputDialogServiceProvider } from '../providers/input-dialog-service/input-dialog-service';
+import { StreakDataServiceProvider } from '../providers/streak-data-service/streak-data-service';
 
 
 
@@ -40,7 +41,8 @@ import { InputDialogServiceProvider } from '../providers/input-dialog-service/in
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HabitServiceProvider,
-    InputDialogServiceProvider
+    InputDialogServiceProvider,
+    StreakDataServiceProvider
   ]
 })
 export class AppModule {}

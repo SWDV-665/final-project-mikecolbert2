@@ -9,10 +9,10 @@
 <ion-content padding>
   <h2>My Streaks</h2>
   <ion-list>
-    <button ion-item *ngFor="let item of items; let i = index">
+    <button ion-item *ngFor="let entry of loadDailyEntries(); let i = index">
      {{ i }}
-     {{ item.date }}
-     {{ item.habit }}
+     {{ entry.date }}
+     {{ entry.name }}
     </button>  
   </ion-list>
 </ion-content>

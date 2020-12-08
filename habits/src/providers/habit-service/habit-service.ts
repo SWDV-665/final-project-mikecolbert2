@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HabitServiceProvider {
 
-    //items array
+    // Habits array
     habits = [];
 
   constructor() {

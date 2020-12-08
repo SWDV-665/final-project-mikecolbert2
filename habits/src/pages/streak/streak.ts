@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { StreakDataServiceProvider } from '../../providers/streak-data-service/streak-data-service';
+
 @Component({
   selector: 'page-streak',
   templateUrl: 'streak.html'
@@ -9,28 +11,16 @@ export class StreakPage {
 
   title = "My Habit Stacker"
 
-  //items array
-  items = [
-    {
-      date: "day 1",
-      habit: "test1"
-    },
-    {
-      date: "day 2",
-      habit: "test2"
-    },
-    {
-      date: "day 3",
-      habit: "test3"
-    },
-    {
-      date: "day 4",
-      habit: "test4"
-    },
-  ];
-
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public streakService: StreakDataServiceProvider) {
 
   }
+
+  loadDailyEntries(){
+    console.log('inside streak.ts')
+    return this.streakService.getDailyEntries();
+  }
+
+
+
 
 }
