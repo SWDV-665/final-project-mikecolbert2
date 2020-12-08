@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HabitServiceProvider } from '../providers/habit-service/habit-service';
+import { InputDialogServiceProvider } from '../providers/input-dialog-service/input-dialog-service';
 
 
 
@@ -38,7 +39,8 @@ import { HabitServiceProvider } from '../providers/habit-service/habit-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HabitServiceProvider
+    HabitServiceProvider,
+    InputDialogServiceProvider
   ]
 })
 export class AppModule {}

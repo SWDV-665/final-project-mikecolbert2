@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
 import { HabitServiceProvider } from '../../providers/habit-service/habit-service';
+import { InputDialogServiceProvider } from '../../providers/input-dialog-service/input-dialog-service';
+
 
 @Component({
   selector: 'page-about',
@@ -10,7 +12,7 @@ import { HabitServiceProvider } from '../../providers/habit-service/habit-servic
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController,public alertCtrl: AlertController, public habitService: HabitServiceProvider) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public habitService: HabitServiceProvider, public inputDialogService: InputDialogServiceProvider ) {
 
   }
 
@@ -19,43 +21,20 @@ export class AboutPage {
   }
 
   removeHabit(habit, index){
-    console.log("Deleting ...", habit);
+    console.log("Deleting ... ", habit);
     this.habitService.removeHabit(index)
   }
 
   addHabit(){
-    console.log("Adding ...");
-    this.showAddHabitPrompt();
+    console.log("Adding ... ");
+    this.inputDialogService.showPrompt();
   }
 
-  showAddHabitPrompt() {
-    const prompt = this.alertCtrl.create({
-      title: 'Add A New Habit',
-      message: "Please enter new habit ... ",
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'What daily habit are you working on?'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          handler: habit => {
-            console.log('Saved clicked', habit);
-            this.habitService.addHabit(habit); //push this item from the login into our items array
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
+  editHabit(habit, index) {
+    console.log("Editing ... ", habit, index); 
 
+    // pass the item and index to our edit prompt
+    this.inputDialogService.showPrompt(habit, index)
+  }
 
 }
