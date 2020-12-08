@@ -1,0 +1,17 @@
+<ion-list>
+    <ion-item-sliding *ngFor="let habit of habits; let i = index">
+      <ion-item>
+
+        <!-- if there is a habit display it. If there is not, show a button to add one. -->
+        <!-- add and remove habits on the about page-->
+      
+        <h1> {{ habit.name }} </h1>
+      </ion-item>
+        <ion-item-options sliding="left">
+          <button ion-button color="secondary">
+            <ion-icon name="checkmark" (click)="didToday(habit)"></ion-icon>
+          </button>
+        </ion-item-options>
+      
+    </ion-item-sliding>
+  </ion-list>

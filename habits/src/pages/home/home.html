@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>My Habit Stacker</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,5 +9,19 @@
   <p>
     Small changes make a big impact.
   </p>
-  
+  <br><br><br>
+
+
+    <ion-content *ngFor="let habit of habits; let i = index">
+  <button ion-button color="secondary" outline style="width:100%; height:30%; text-align:center;"  (click)="didToday(habit)">{{ habit.name }}</button>
+</ion-content>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="addHabit()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+
 </ion-content>
