@@ -22,9 +22,8 @@ export class HomePage {
   }
 
   didToday(habit){
-    const d = Date();   
-    console.log("home.ts", d, habit);
-    this.streakService.addDaily(habit, d);
+    console.log("home.ts", habit);
+    this.streakService.addDaily(habit);
   }
 
 }
