@@ -11,6 +11,9 @@
   </p>
   <br><br><br>
 
+<h3 text-center *ngIf="loadHabits().length === 0">
+  No habits available to track. <br><br> Visit the <b>About</b> page to add a new habit.
+</h3>
 
 <ion-list no-lines *ngFor="let habit of loadHabits(); let i = index">
 
@@ -20,7 +23,9 @@
 
 <br><br><br>
 
-Your streak is X days.
+<h4 text-center *ngIf="loadHabits().length > 0">
+Your streak is <i>X</i> days.
+</h4>
 
 
 </ion-content>
