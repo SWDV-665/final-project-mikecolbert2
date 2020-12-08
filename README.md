@@ -1,4 +1,4 @@
-** Code and Features**
+### ** Code and Features**
 - [] Format About page and clean up text copy.
 - [] Configure About to use a {{title}}
 - [] Ensure all other pages are using {{title}}
@@ -29,12 +29,12 @@
 - [] Add multi-user functionality 
 - [] Add validation so no blank habits
 
-**Migrate to Heroku & Mongo**
+### **Migrate to Heroku & Mongo**
 - [] Make a MongoDB login and collection for this project
 - [] Connect the project to Mongo
 - [] Upload the server to Heroku
 
-**Needed API endpoints:**
+### **Needed API endpoints:**
 
 - [] add new habits
 - [] delete a habit
