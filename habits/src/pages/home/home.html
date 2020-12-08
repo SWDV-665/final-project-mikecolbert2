@@ -12,16 +12,15 @@
   <br><br><br>
 
 
-    <ion-content *ngFor="let habit of habits; let i = index">
-  <button ion-button color="secondary" outline style="width:100%; height:30%; text-align:center;"  (click)="didToday(habit)">{{ habit.name }}</button>
-</ion-content>
+<ion-list no-lines *ngFor="let habit of loadHabits(); let i = index">
 
-  <ion-fab bottom right>
-    <button ion-fab mini (click)="addHabit()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-fab>
+  <button ion-button large full color="secondary" (click)="didToday(habit)">{{ habit.name }} </button>
 
+</ion-list>
+
+<br><br><br>
+
+Your streak is X days.
 
 
 </ion-content>

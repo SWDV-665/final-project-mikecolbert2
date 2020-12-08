@@ -15,3 +15,8 @@
       
     </ion-item-sliding>
   </ion-list>
+
+
+
+
+  outline style="width:100%; height:30%; text-align:center;"  

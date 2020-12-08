@@ -7,6 +7,32 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>About My Habit Stacker</h2>
+<h3>About My Habit Stacker</h3>
 <p>This application was developed by Mike Colbert for SWDV665 - Advanced Topics in Software Development, 2W 20/FA2.</p>
+<br><br><br>
+You should only try to develop one new habit at a time.<br>
+<h3>Habit I'm Tracking</h3>
+<ion-list>
+  <ion-item-sliding *ngFor="let habit of loadHabits(); let i = index">
+    <ion-item>
+
+      <!-- if there is a habit display it. If there is not, show a button to add one. -->
+      <!-- add and remove habits on the about page-->
+    
+      <h1> {{ habit.name }} </h1>
+    </ion-item>
+      <ion-item-options sliding="left">
+        <button ion-button color="danger">
+          <ion-icon name="trash" (click)="removeHabit(habit)"></ion-icon>
+        </button>
+      </ion-item-options>
+    
+  </ion-item-sliding>
+</ion-list>
+
+<ion-fab bottom right>
+  <button ion-fab mini (click)="addHabit()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
 </ion-content>
