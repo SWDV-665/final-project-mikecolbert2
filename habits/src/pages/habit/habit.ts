@@ -8,10 +8,10 @@ import { InputDialogServiceProvider } from '../../providers/input-dialog-service
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-habitt',
+  templateUrl: 'habit.html'
 })
-export class AboutPage {
+export class HabitPage {
 
   title = "My Habit Stacker";
   

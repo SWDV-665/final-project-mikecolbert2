@@ -24,7 +24,7 @@ export class InputDialogServiceProvider {
         {
           name: 'name',
           placeholder: 'Name',
-          value: habit ? habit.name : null
+          value: habit ? habit.name : null // if there is a habit, show the habit name, else null
         },
       ],
       buttons: [

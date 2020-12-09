@@ -6,10 +6,10 @@ import { HabitServiceProvider } from '../../providers/habit-service/habit-servic
 import { StreakDataServiceProvider } from '../../providers/streak-data-service/streak-data-service';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-daily',
+  templateUrl: 'daily.html'
 })
-export class HomePage {
+export class DailyPage {
 
 
   title = "My Habit Stacker";

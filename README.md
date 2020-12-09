@@ -7,12 +7,12 @@
 - [ ] Format About page and clean up text copy.
 - [x] ~~Configure About to use a {{title}}~~
 - [x] ~~Ensure all other pages are using {{title}}~~
-- [ ] Rename About to "Habits"
+- [x] ~~Rename About to "Habits"~~
 
-- [ ] Streak service should not only validate date, but also on habit
-- [ ] Or limit to only one habit at a time
+- [ ] Streak service should not only validate date, but also on habit or limit to only one habit at a time
+- [x] ~~Editing a habit does not populate the prompt with the existing details.~~
 
-- [x] Daily Check-in tab - add hyphen
+- [x] ~~Daily Check-in tab - add hyphen~~
 - [ ] Refactor code in streak service to make it more modular
 
 Comment code:
@@ -24,11 +24,11 @@ Comment code:
    - [ ] Home
    - [ ] Streak
 
-- [ ] Ability to edit streak list with datepicker
-- [ ] Ability to delete a streak item
+- [ ] Ability to edit streak list with datepicker?
+- [ ] Ability to delete a streak item?
 
 - [ ] Format Check-in page and text copy.
-- [ ] Work on streak days
+- [ ] Work on streak days on check-in page
 
 - [ ] Add abiltiy to share streak days?
 - [x] ~~Add ability to share your habit~~

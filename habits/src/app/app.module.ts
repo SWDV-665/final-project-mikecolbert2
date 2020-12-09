@@ -4,8 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { StreakPage } from '../pages/streak/streak';
-import { AboutPage } from '../pages/about/about';
-import { HomePage } from '../pages/home/home';
+import { HabitPage } from '../pages/habit/habit';
+import { DailyPage } from '../pages/daily/daily';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,8 +21,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   declarations: [
     MyApp,
     StreakPage,
-    AboutPage,
-    HomePage,
+    HabitPage,
+    DailyPage,
     TabsPage
   ],
   imports: [
@@ -32,9 +32,9 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    HabitPage,
     StreakPage,
-    HomePage,
+    DailyPage,
     TabsPage
   ],
   providers: [
