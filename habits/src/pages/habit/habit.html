@@ -46,6 +46,7 @@
     </ion-fab-list>
   </ion-fab>
 
+  <!-- Will not be displayed if there is already a habit displayed - only one habit at a time -->
   <ion-fab bottom right *ngIf="loadHabits().length === 0">
     <button ion-fab mini (click)="addHabit()">
       <ion-icon name="add"></ion-icon>

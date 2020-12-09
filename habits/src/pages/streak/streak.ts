@@ -11,7 +11,8 @@ export class StreakPage {
 
   title = "My Habit Stacker";
 
-  constructor(public navCtrl: NavController, public streakService: StreakDataServiceProvider) {
+  constructor(public navCtrl: NavController, 
+              public streakService: StreakDataServiceProvider) {
 
   }
 
@@ -19,8 +20,5 @@ export class StreakPage {
     console.log('inside streak.ts')
     return this.streakService.getDailyEntries();
   }
-
-
-
 
 }

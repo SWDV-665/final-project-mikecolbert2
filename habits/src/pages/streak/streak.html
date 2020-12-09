@@ -5,19 +5,25 @@
 </ion-header>
 
 <ion-content padding>
-  
+
   <h3 text-center *ngIf="loadDailyEntries().length === 0">
     <p>Visit <span class="brand">Daily Check-in</span> for your first check-in.</p>
   </h3>
-  
+
   <ion-list>
     <ion-item no-lines inset *ngFor="let entry of loadDailyEntries(); let i = index">
-     <span>{{ entry.date | date: 'shortDate' }}</span> --  <!-- from angular, date pipe-->
-     <span style="color:red;" *ngIf="!entry.habit" ><img src="../../assets/icon/delete.png" style="vertical-align: text-bottom;"></span>
-     <span style="color:green; font-weight:bold;" *ngIf="entry.habit">{{entry.habit}}</span>
-     
-     
-    </ion-item>  
+      
+      <!-- date displayed with Angular, date pipe-->
+      <span class="skipped-day" *ngIf="!entry.habit">
+        {{ entry.date | date: 'shortDate' }} -- 
+        <img class="skipped-icon" src="../../assets/icon/delete.png">
+      </span>
+      
+      <span class="habit-day" *ngIf="entry.habit">
+        {{ entry.date | date: 'shortDate' }} --
+        {{entry.habit}}
+      </span>
+    </ion-item>
   </ion-list>
 
 </ion-content>

@@ -11,10 +11,12 @@ import { StreakDataServiceProvider } from '../../providers/streak-data-service/s
 })
 export class DailyPage {
 
-
   title = "My Habit Stacker";
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public habitService: HabitServiceProvider, public streakService: StreakDataServiceProvider) {
+  constructor(public navCtrl: NavController, 
+              public alertCtrl: AlertController, 
+              public habitService: HabitServiceProvider, 
+              public streakService: StreakDataServiceProvider) {
 
   }
 

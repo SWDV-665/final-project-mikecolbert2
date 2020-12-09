@@ -19,14 +19,14 @@ Comment code:
 - [x] ~~habit service~~
 - [x] ~~inputDialog service~~
  - other .ts and .html files
-   - [ ] About
-   - [ ] Home
-   - [ ] Streak
+   - [x] ~~My Habit~~
+   - [x] ~~Daily Check-in~~
+   - [x] ~~Streak~~
 
 - [ ] Ability to edit streak list with datepicker?
 - [ ] Ability to delete a streak item?
 - [x] ~~Format Check-in page and text copy.~~
-- [ ] Work on streak days on check-in page
+- [ ] Work on counting streak days on check-in page?
 
 - [ ] Add abiltiy to share streak days?
 - [x] ~~Add ability to share your habit~~
@@ -54,3 +54,9 @@ Comment code:
 - [ ] list a single item in a log
 - [ ] edit an item in a log
 - [ ] delete an item from a log
+
+
+
+- [ ] Remove FAB from Daily Check-in
+- [ ] Remove makeData() from streak-data-service.ts
+- [ ] Remove makeData() from daily.ts

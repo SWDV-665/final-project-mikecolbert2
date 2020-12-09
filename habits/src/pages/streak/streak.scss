@@ -7,4 +7,17 @@ page-streak {
     .title { 
       color: map-get($colors, "custom-green");
       }
+
+    .skipped-day {
+      color: map-get($colors, 'danger');
+    }
+
+    .skipped-icon {
+      vertical-align: text-bottom;
+    }
+
+    .habit-day {
+      color: map-get($colors, 'primary'); 
+      font-weight:bold;
+    }
 }

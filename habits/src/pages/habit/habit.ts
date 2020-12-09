@@ -27,77 +27,66 @@ export class HabitPage {
     return this.habitService.getHabits();
   }
 
+  // helper function to create message contents for all social sharing
   createShareMessages(){
     const habit = this.loadHabits();
-    let message = "This month, I want to " + habit[0].name;  //MWC debug this
+    let message = "This month, I want to " + habit[0].name;
     let subject = "Shared via MyHabitStacker app";
     let url = "https://myhabitstacker.com";
     console.log(message);
     return { message, subject, url };
   }
 
-
-  share(){
-    console.log("inside of share() to send text message")
+  // for text messaging
+  share(){ 
+    console.log("inside of share()")
     let text = this.createShareMessages();
     this.socialSharing.share(text.message, text.subject).then(() => {
       // Sharing via text message is possible
-      console.log("shared successfully via text")
     }).catch(() => {
       // Sharing via text message is not possible
     });
-    
   }
 
   shareViaEmail(){
     console.log("inside of shareViaEmail()")
     let email = this.createShareMessages();
     this.socialSharing.share(email.message, email.subject).then(() => {
-      // Sharing via text message is possible
-      console.log("shared successfully via email")
+      // Sharing via email is possible
     }).catch(() => {
-      // Sharing via text message is not possible
+      // Sharing via email is not possible
     });
-    
   }
 
   shareViaFacebook(){
     console.log("inside of shareViaFacebook()")
     let post = this.createShareMessages();
     this.socialSharing.share(post.message).then(() => {
-      // Sharing via text message is possible
-      console.log("shared successfully via Facebook")
+      // Sharing via Facebook is possible
     }).catch(() => {
-      // Sharing via text message is not possible
+      // Sharing via Facebook is not possible
     });
-    
   }
 
   shareViaInstagram(){
     console.log("inside of shareViaInstagram()")
     let post = this.createShareMessages();
     this.socialSharing.share(post.message).then(() => {
-      // Sharing via text message is possible
-      console.log("shared successfully via Instagram")
+      // Sharing via Instagram is possible
     }).catch(() => {
-      // Sharing via text message is not possible
+      // Sharing via Instagram is not possible
     });
-    
   }
 
   removeHabit(habit, index){
-    console.log("Deleting ... ", habit);
     this.habitService.removeHabit(index)
   }
 
   addHabit(){
-    console.log("Adding ... ");
     this.inputDialogService.showPrompt();
   }
 
   editHabit(habit, index) {
-    console.log("Editing ... ", habit, index); 
-
     // pass the item and index to our edit prompt
     this.inputDialogService.showPrompt(habit, index)
   }
