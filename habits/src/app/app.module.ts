@@ -14,6 +14,7 @@ import { HabitServiceProvider } from '../providers/habit-service/habit-service';
 import { InputDialogServiceProvider } from '../providers/input-dialog-service/input-dialog-service';
 import { StreakDataServiceProvider } from '../providers/streak-data-service/streak-data-service';
 
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { StreakDataServiceProvider } from '../providers/streak-data-service/stre
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HabitServiceProvider,
     InputDialogServiceProvider,
-    StreakDataServiceProvider
+    StreakDataServiceProvider,
+    SocialSharing
   ]
 })
 export class AppModule {}

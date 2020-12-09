@@ -12,7 +12,8 @@ import { StreakDataServiceProvider } from '../../providers/streak-data-service/s
 export class HomePage {
 
 
-  title = "My Habit Stacker"
+  title = "My Habit Stacker";
+
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public habitService: HabitServiceProvider, public streakService: StreakDataServiceProvider) {
 
   }

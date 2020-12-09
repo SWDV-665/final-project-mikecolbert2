@@ -1,8 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      My Habit Stacker
-    </ion-title>
+    <ion-title> {{ title }} </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,7 +9,7 @@
 <p>This application was developed by Mike Colbert for SWDV665 - Advanced Topics in Software Development, 2W 20/FA2.</p>
 <br><br><br>
 You should only try to develop one new habit at a time.<br>
-<h3>Habit I'm Tracking</h3>
+<h3>This month, I want to ... </h3>
 <ion-list>
   <ion-item-sliding *ngFor="let habit of loadHabits(); let i = index">
     <ion-item>
@@ -39,5 +37,15 @@ You should only try to develop one new habit at a time.<br>
   <button ion-fab mini (click)="addHabit()">
     <ion-icon name="add"></ion-icon>
   </button>
+</ion-fab>
+
+<ion-fab left bottom>
+  <button ion-fab mini color="light"><ion-icon name="arrow-dropup"></ion-icon></button>
+  <ion-fab-list side="top">
+    <button ion-fab><ion-icon name="logo-facebook" (click)="shareViaFacebook()"></ion-icon></button>
+    <button ion-fab><ion-icon name="logo-instagram" (click)="shareViaInstagram()"></ion-icon></button>
+    <button ion-fab><ion-icon name="mail" (click)="shareViaEmail()"></ion-icon></button>
+    <button ion-fab><ion-icon name="text" (click)="share()"></ion-icon></button>
+  </ion-fab-list>
 </ion-fab>
 </ion-content>

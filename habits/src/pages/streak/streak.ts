@@ -9,7 +9,7 @@ import { StreakDataServiceProvider } from '../../providers/streak-data-service/s
 })
 export class StreakPage {
 
-  title = "My Habit Stacker"
+  title = "My Habit Stacker";
 
   constructor(public navCtrl: NavController, public streakService: StreakDataServiceProvider) {
 

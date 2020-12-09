@@ -1,16 +1,18 @@
-## Mike Colbert
-### SWDV-665
-### Final Project - Habit Tracker
+## Final Project - Habit TrackerMike Colbert
+### Mike Colbert
+
 
 ### ** Code and Features**
+- [ ] Add custom styling and themeing to the application.
 - [ ] Format About page and clean up text copy.
-- [ ] Configure About to use a {{title}}
-- [ ] Ensure all other pages are using {{title}}
+- [x] ~~Configure About to use a {{title}}~~
+- [x] ~~Ensure all other pages are using {{title}}~~
+- [ ] Rename About to "Habits"
 
 - [ ] Streak service should not only validate date, but also on habit
 - [ ] Or limit to only one habit at a time
 
-- [ ] Daily Check-in tab - add hyphen
+- [x] Daily Check-in tab - add hyphen
 - [ ] Refactor code in streak service to make it more modular
 
 Comment code:
@@ -29,9 +31,10 @@ Comment code:
 - [ ] Work on streak days
 
 - [ ] Add abiltiy to share streak days?
+- [x] ~~Add ability to share your habit~~
 - [ ] Add ability to take photo?
 - [ ] Add reminder at 8:00pm?
-- [ ] Add multi-user functionality 
+- [ ] Add multi-user functionality? 
 - [ ] Add validation so no blank habits
 
 ### **Migrate to Heroku & Mongo**
