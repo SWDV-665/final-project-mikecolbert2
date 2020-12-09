@@ -85,7 +85,6 @@ export class HabitPage {
     
   }
 
-
   removeHabit(habit, index){
     console.log("Deleting ... ", habit);
     this.habitService.removeHabit(index)

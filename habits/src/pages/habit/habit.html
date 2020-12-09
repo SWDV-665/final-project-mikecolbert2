@@ -1,51 +1,55 @@
 <ion-header>
   <ion-navbar>
-    <ion-title> {{ title }} </ion-title>
+    <ion-title> <span class="title"> {{ title }} </span> </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-<h3>About My Habit Stacker</h3>
-<p>This application was developed by Mike Colbert for SWDV665 - Advanced Topics in Software Development, 2W 20/FA2.</p>
-<br><br><br>
-You should only try to develop one new habit at a time.<br>
-<h3>This month, I want to ... </h3>
-<ion-list>
-  <ion-item-sliding *ngFor="let habit of loadHabits(); let i = index">
-    <ion-item>
+<ion-content text-center padding>
+  <p>Developed by Mike Colbert for SWDV665, 2W 20/FA2.</p>
+  <br><br><br>
+  <h3>I want to be better, <span class="brand">one new habit </span> at a time...</h3>
+  <br>
 
-      <!-- if there is a habit display it. If there is not, show a button to add one. -->
-      <!-- add and remove habits on the about page-->
-    
-      <h1> {{ habit.name }} </h1>
-    </ion-item>
+  <ion-list inset>
+    <ion-item-sliding *ngFor="let habit of loadHabits(); let i = index">
+      <ion-item>
+        <h1> {{ habit.name }} </h1>
+      </ion-item>
       <ion-item-options sliding="left">
-        <button (click)="editHabit(habit, i)" ion-button color="light" icon-start>
+        <button (click)="editHabit(habit, i)" ion-button color="dark" icon-start>
           <ion-icon name="create"></ion-icon>
-         </button>
+        </button>
         <button ion-button color="danger">
           <ion-icon name="trash" (click)="removeHabit(habit)"></ion-icon>
-          
         </button>
-
       </ion-item-options>
-    
-  </ion-item-sliding>
-</ion-list>
+    </ion-item-sliding>
+  </ion-list>
 
-<ion-fab bottom right>
-  <button ion-fab mini (click)="addHabit()">
-    <ion-icon name="add"></ion-icon>
-  </button>
-</ion-fab>
+  <ion-fab left bottom>
+    <button ion-fab mini color="dark">
+      <ion-icon name="arrow-dropup"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab>
+        <ion-icon color="custom-green" name="logo-facebook" (click)="shareViaFacebook()"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon color="custom-green" name="logo-instagram" (click)="shareViaInstagram()"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon color="custom-green" name="mail" (click)="shareViaEmail()"></ion-icon>
+      </button>
+      <button ion-fab>
+        <ion-icon color="custom-green" name="text" (click)="share()"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 
-<ion-fab left bottom>
-  <button ion-fab mini color="light"><ion-icon name="arrow-dropup"></ion-icon></button>
-  <ion-fab-list side="top">
-    <button ion-fab><ion-icon name="logo-facebook" (click)="shareViaFacebook()"></ion-icon></button>
-    <button ion-fab><ion-icon name="logo-instagram" (click)="shareViaInstagram()"></ion-icon></button>
-    <button ion-fab><ion-icon name="mail" (click)="shareViaEmail()"></ion-icon></button>
-    <button ion-fab><ion-icon name="text" (click)="share()"></ion-icon></button>
-  </ion-fab-list>
-</ion-fab>
+  <ion-fab bottom right *ngIf="loadHabits().length === 0">
+    <button ion-fab mini (click)="addHabit()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

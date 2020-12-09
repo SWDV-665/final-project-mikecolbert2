@@ -1,3 +1,10 @@
 page-daily {
-
+    .brand {
+        color: map-get($colors, "custom-green");
+        font-weight: bold;
+      }
+      
+    .title { 
+      color: map-get($colors, "custom-green");
+      }
 }

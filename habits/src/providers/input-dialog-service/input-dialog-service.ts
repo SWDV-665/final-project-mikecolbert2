@@ -19,7 +19,7 @@ export class InputDialogServiceProvider {
   showPrompt(habit?, index?) {
     const prompt = this.alertCtrl.create({
       title: habit ? 'Edit Habit' : 'Add Habit',
-      message: habit ? "Please edit this habit ... " : "Please enter a new habit ...",
+      //message: habit ? "Please edit this habit ... " : "Please enter a new habit ...", //commented for alert text if empty
       inputs: [
         {
           name: 'name',
@@ -38,17 +38,23 @@ export class InputDialogServiceProvider {
           text: 'Save',
           handler: habit => {
             console.log('Saved clicked', habit);
+
+            if (!habit.name) { // if the there is no text in the alert box, display an error
+              prompt.setMessage(' ** You must enter a habit. ');
+              return false;
+            }
+
             if (index !== undefined) {
               this.habitService.editHabit(habit, index);
             }
             else {
               this.habitService.addHabit(habit);
             }
+
           }
         }
       ]
     });
     prompt.present();
   }
-
 }

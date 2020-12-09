@@ -3,22 +3,21 @@
 
 
 ### ** Code and Features**
-- [ ] Add custom styling and themeing to the application.
-- [ ] Format About page and clean up text copy.
-- [x] ~~Configure About to use a {{title}}~~
+- [x] ~~Add custom styling and themeing to the application.~~
+- [ ] My habit page - .brand not working.
+- [x] ~~Format Habit page and clean up text copy.~~
+- [x] ~~Configure Habit to use a {{title}}~~
 - [x] ~~Ensure all other pages are using {{title}}~~
-- [x] ~~Rename About to "Habits"~~
-
-- [ ] Streak service should not only validate date, but also on habit or limit to only one habit at a time
+- [x] ~~Rename About to "My Habit"~~
 - [x] ~~Editing a habit does not populate the prompt with the existing details.~~
-
 - [x] ~~Daily Check-in tab - add hyphen~~
+
 - [ ] Refactor code in streak service to make it more modular
 
 Comment code:
 - [ ] streak service
-- [ ] habit service
-- [ ] inputDialog service
+- [x] ~~habit service~~
+- [x] ~~inputDialog service~~
  - other .ts and .html files
    - [ ] About
    - [ ] Home
@@ -26,8 +25,7 @@ Comment code:
 
 - [ ] Ability to edit streak list with datepicker?
 - [ ] Ability to delete a streak item?
-
-- [ ] Format Check-in page and text copy.
+- [x] ~~Format Check-in page and text copy.~~
 - [ ] Work on streak days on check-in page
 
 - [ ] Add abiltiy to share streak days?
@@ -35,11 +33,12 @@ Comment code:
 - [ ] Add ability to take photo?
 - [ ] Add reminder at 8:00pm?
 - [ ] Add multi-user functionality? 
-- [ ] Add validation so no blank habits
+- [x] ~~Add validation so no blank habits~~
 
 ### **Migrate to Heroku & Mongo**
+- [ ] Build API server
 - [ ] Make a MongoDB login and collection for this project
-- [ ] Connect the project to Mongo
+- [ ] Connect the server to Mongo
 - [ ] Upload the server to Heroku
 
 ### **Needed API endpoints:**

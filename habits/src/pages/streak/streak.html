@@ -1,11 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <ion-title> {{ title }} </ion-title>
+    <ion-title> <span class="title"> {{ title }} </span> </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>My Streaks</h2>
+  
+  <h3 text-center *ngIf="loadDailyEntries().length === 0">
+    <p>Visit <span class="brand">Daily Check-in</span> for your first check-in.</p>
+  </h3>
+  
   <ion-list>
     <ion-item no-lines inset *ngFor="let entry of loadDailyEntries(); let i = index">
      <span>{{ entry.date | date: 'shortDate' }}</span> --  <!-- from angular, date pipe-->

@@ -29,50 +29,38 @@ export class StreakDataServiceProvider {
     }
   }
 
-
+  // helper function to calculate the difference between two dates
   // a and b are javascript Date objects
   dateDiffInDays(a, b) {
     const _MS_PER_DAY = 1000 * 60 * 60 * 24;
     // Discard the time and time-zone information.
     const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
     const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-
     return Math.floor((utc2 - utc1) / _MS_PER_DAY);
   }
 
-
-  // MWC detect skipped days & return an X icon for those days
   getDailyEntries() {
-
-    
     for (var i = 0; i < this.daily_entries.length; i++) {
-
-      if (i === this.daily_entries.length - 1) { //added to keep date2 from overflowing the length and returning undefined
+      if (i === this.daily_entries.length - 1) { //added -1 to keep date2 from overflowing the array length and returning undefined
         break;
       }
-
       const date1 = new Date(this.daily_entries[i].date);
-      const date2 = new Date(this.daily_entries[i + 1].date); // (keep in mind, index i + 1 cant be > than array.length)
-      console.log('date1: ', date1);
-      console.log('date2: ', date2);
-
-      //calculate diffDays between the 2 dates, if diff is > 1, you have a missing date
+      const date2 = new Date(this.daily_entries[i + 1].date); 
+      
+      //if difference between days is > 1, there is a missing date
       const difference = this.dateDiffInDays(date1, date2);
-      console.log('difference: ', difference);
+     
       if (difference > 1) {
-        //var missingDate = create your missing date (use your date1 variable + 1Day)
-        const missingDate = date1.setDate(date1.getDate() + 1);
-
+        const missingDate = date1.setDate(date1.getDate() + 1); //create missing date using date1 + 1 day
+        // build element for array with the missing date
         const missing_date = {
           'habit': '',
           'date': missingDate
         }
-        //add misingDate to missingDates[] array
+        //add the missing_date element to the array at the index where the date is missing
         this.daily_entries.splice(i+1, 0, missing_date);
-        console.log(this.daily_entries);
       }
     }
-
     return this.daily_entries;
   }
 

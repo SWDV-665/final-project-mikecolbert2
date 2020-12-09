@@ -16,7 +16,6 @@ export class HabitServiceProvider {
     console.log('Hello HabitServiceProvider Provider');
   }
 
-
   getHabits(){
     return this.habits;
   }
