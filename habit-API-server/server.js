@@ -104,7 +104,6 @@ app.put('/api/habits/:id', function (req, res) {
     });
 });
 
-
 // Delete a habit
 app.delete('/api/habits/:id', function (req, res) {
     console.log("Deleting a habit ... ", req.params.id);
@@ -201,7 +200,6 @@ app.put('/api/logs/:id', function (req, res) {
     });
 });
 
-
 // Delete a daily log entry
 app.delete('/api/logs/:id', function (req, res) {
     console.log("Deleting a daily log entry ... ", req.params.id);
@@ -223,8 +221,6 @@ app.delete('/api/logs/:id', function (req, res) {
         }
     });
 });
-
-
 
 
 // Start app and listen on port 8080  

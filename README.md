@@ -28,18 +28,19 @@ Comment code:
 
 ### **Migrate to Heroku & Mongo**
 - [x] ~~Build API server~~
-- [ ] Make a MongoDB login and collection for this project
-- [ ] Connect the server to Mongo
+- [x] ~~Make a MongoDB login and collection for this project~~
 - [ ] Upload the server to Heroku
+- [ ] Set the Heroku environment variable to use the MongoDB cloud server
 
 ### **Needed API endpoints**
-
+- [ ] Cut over the data services for habits
 - [ ] add new habits
 - [ ] delete a habit
 - [ ] edit a habit
 - [ ] list all habits
 - [ ] list an individual habit
 
+- [ ] Cut over the data services for daily logging
 - [ ] add to log when a habit is complete
 - [ ] list all data in log
 - [ ] list a single item in a log
