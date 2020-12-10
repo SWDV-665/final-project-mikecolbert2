@@ -14,17 +14,28 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class HabitPage {
 
   title = "My Habit Stacker";
+  habits = [];
+  errorMessage: string;
   
   constructor(public navCtrl: NavController, 
               public alertCtrl: AlertController, 
               public habitService: HabitServiceProvider, 
               public inputDialogService: InputDialogServiceProvider, 
               private socialSharing: SocialSharing ) {
+                
+                habitService.dataChanged$.subscribe((dataChanged: boolean) => {
+                  this.loadHabits();
+                });
+  }
 
+  ionViewDidLoad() {
+    this.loadHabits();
   }
 
   loadHabits(){
-    return this.habitService.getHabits();
+    this.habitService.getHabits().subscribe(
+      habits => this.habits = habits,
+      error => this.errorMessage = <any>error);
   }
 
   // helper function to create message contents for all social sharing
@@ -39,7 +50,7 @@ export class HabitPage {
 
   // for text messaging
   share(){ 
-    console.log("inside of share()")
+    console.log("inside of share()");
     let text = this.createShareMessages();
     this.socialSharing.share(text.message, text.subject).then(() => {
       // Sharing via text message is possible
@@ -49,7 +60,7 @@ export class HabitPage {
   }
 
   shareViaEmail(){
-    console.log("inside of shareViaEmail()")
+    console.log("inside of shareViaEmail()");
     let email = this.createShareMessages();
     this.socialSharing.share(email.message, email.subject).then(() => {
       // Sharing via email is possible
@@ -59,7 +70,7 @@ export class HabitPage {
   }
 
   shareViaFacebook(){
-    console.log("inside of shareViaFacebook()")
+    console.log("inside of shareViaFacebook()");
     let post = this.createShareMessages();
     this.socialSharing.share(post.message).then(() => {
       // Sharing via Facebook is possible
@@ -69,7 +80,7 @@ export class HabitPage {
   }
 
   shareViaInstagram(){
-    console.log("inside of shareViaInstagram()")
+    console.log("inside of shareViaInstagram()");
     let post = this.createShareMessages();
     this.socialSharing.share(post.message).then(() => {
       // Sharing via Instagram is possible
@@ -78,17 +89,18 @@ export class HabitPage {
     });
   }
 
-  removeHabit(habit, index){
-    this.habitService.removeHabit(index)
+  removeHabit(habit, id){
+    this.habitService.removeHabit(id);
   }
 
   addHabit(){
+    // call the alert prompt dialog service
     this.inputDialogService.showPrompt();
   }
 
-  editHabit(habit, index) {
-    // pass the item and index to our edit prompt
-    this.inputDialogService.showPrompt(habit, index)
+  editHabit(habit, id) {
+    // pass the habit and index to our edit prompt
+    this.inputDialogService.showPrompt(habit, habit._id);
   }
 
 }

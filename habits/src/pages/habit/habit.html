@@ -12,7 +12,7 @@
   <br>
 
   <ion-list inset>
-    <ion-item-sliding *ngFor="let habit of loadHabits(); let i = index">
+    <ion-item-sliding *ngFor="let habit of habits; let i = index">
       <ion-item>
         <h1> {{ habit.name }} </h1>
       </ion-item>
@@ -21,7 +21,7 @@
           <ion-icon name="create"></ion-icon>
         </button>
         <button ion-button color="danger">
-          <ion-icon name="trash" (click)="removeHabit(habit)"></ion-icon>
+          <ion-icon name="trash" (click)="removeHabit(habit, habit._id)"></ion-icon>
         </button>
       </ion-item-options>
     </ion-item-sliding>
@@ -48,7 +48,7 @@
   </ion-fab>
 
   <!-- Will not be displayed if there is already a habit displayed - only one habit at a time -->
-  <ion-fab bottom right *ngIf="loadHabits().length === 0">
+  <ion-fab bottom right *ngIf="habits.length === 0">
     <button ion-fab mini (click)="addHabit()">
       <ion-icon name="add"></ion-icon>
     </button>

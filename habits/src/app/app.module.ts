@@ -15,7 +15,7 @@ import { InputDialogServiceProvider } from '../providers/input-dialog-service/in
 import { StreakDataServiceProvider } from '../providers/streak-data-service/streak-data-service';
 
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
