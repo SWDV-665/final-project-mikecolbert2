@@ -3,7 +3,7 @@
 
 ### ** Code and Features**
 - [x] ~~Add custom styling and themeing to the application.~~
-- [x] My habit page - .brand not working.
+- [x] ~~My habit page - .brand not working.~~
 - [x] ~~Format Habit page and clean up text copy.~~
 - [x] ~~Configure Habit to use a {{title}}~~
 - [x] ~~Ensure all other pages are using {{title}}~~
@@ -27,7 +27,7 @@ Comment code:
 - [x] ~~Add validation so no blank habits~~
 
 ### **Migrate to Heroku & Mongo**
-- [ ] Build API server
+- [x] ~~Build API server~~
 - [ ] Make a MongoDB login and collection for this project
 - [ ] Connect the server to Mongo
 - [ ] Upload the server to Heroku

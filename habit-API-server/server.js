@@ -7,7 +7,7 @@ var methodOverride = require('method-override');
 var cors = require('cors');
 
 // Configuration
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/groceries");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/MyHabitStacker");
 
 app.use(bodyParser.urlencoded({'extended': 'true'}));
 app.use(bodyParser.json());
@@ -23,79 +23,80 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Model
-var Grocery = mongoose.model('Grocery', {
+// Models
+var Habit = mongoose.model('Habit', {
+    name: String
+});
+
+var Log = mongoose.model('DailyLog', {
     name: String,
-    quantity: Number
+    date: Date
 });
 
+// ** HABITS ** //
+// Get all habits 
+app.get('/api/habits', function (req, res) {
 
-// Get all grocery items
-app.get('/api/groceries', function (req, res) {
+    console.log("Listing habits ...");
 
-    console.log("Listing groceries items...");
-
-    //use mongoose to get all groceries in the database
-    Grocery.find(function (err, groceries) {
-
+    //use mongoose to get data from the database
+    Habit.find(function (err, habits) {
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
         }
 
-        res.json(groceries); // return all groceries in JSON format
+        res.json(habits); // return all habits in JSON format
     });
 });
 
-// Get one grocery item
-app.get('/api/groceries/:id', function (req, res) {
+// Get one habit
+app.get('/api/habits/:id', function (req, res) {
 
-    console.log("List one grocery item...");
+    console.log("List one specific habit ...");
     
-    //use mongoose to get a single grocery item from the database
-    Grocery.find({ _id: req.params.id }, function (err, groceries) {
+    //use mongoose to get a single habit from the database
+    Habit.find({ _id: req.params.id }, function (err, habits) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
         }
 
-        res.json(groceries); // return the grocery item in JSON format
+        res.json(habits); // return the habit in JSON format
     });
 });
 
-// Create a grocery Item
-app.post('/api/groceries', function (req, res) {
+// Create a new habit
+app.post('/api/habits', function (req, res) {
 
-    console.log("Creating grocery item...");
+    console.log("Creating a new habit ...");
 
-    Grocery.create({
+    Habit.create({
         name: req.body.name,
-        quantity: req.body.quantity,
         done: false
-    }, function (err, grocery) {
+    }, function (err, habit) {
         if (err) {
             res.send(err);
         }
 
-        // create and return all the groceries
-        Grocery.find(function (err, groceries) {
+        // create and return all the habits
+        Habit.find(function (err, habits) {
             if (err)
                 res.send(err);
-            res.json(groceries);
+            res.json(habits);
         });
     });
 
 });
 
-// Update a grocery Item
-app.put('/api/groceries/:id', function (req, res) {
-    const grocery = {
-        name: req.body.name,
-        quantity: req.body.quantity
+// Update a habit 
+app.put('/api/habits/:id', function (req, res) {
+    const habit = {
+        name: req.body.name
     };
-    console.log("Updating grocery item... ", req.params.id);
-    Grocery.update({_id: req.params.id}, grocery, function (err, raw) {
+    console.log("Updating the habit ... ", req.params.id);
+    Habit.update({_id: req.params.id}, habit, function (err, raw) {
         if (err) {
             res.send(err);
         }
@@ -104,22 +105,22 @@ app.put('/api/groceries/:id', function (req, res) {
 });
 
 
-// Delete a grocery Item
-app.delete('/api/groceries/:id', function (req, res) {
-    console.log("Deleting grocery item... ", req.params.id);
-    Grocery.findOneAndRemove({   //updated from .remove - https://stackoverflow.com/questions/50283081/mongodb-error-cannot-use-retryable-writes-with-limit-0
+// Delete a habit
+app.delete('/api/habits/:id', function (req, res) {
+    console.log("Deleting a habit ... ", req.params.id);
+    Habit.findOneAndRemove({   //updated from .remove - https://stackoverflow.com/questions/50283081/mongodb-error-cannot-use-retryable-writes-with-limit-0
         _id: req.params.id
-    }, function (err, grocery) {
+    }, function (err, habit) {
         if (err) {
-            console.error("Error deleting grocery ", err);
+            console.error("Error deleting the habit ", err);
         }
         else {
-            Grocery.find(function (err, groceries) {
+            Habit.find(function (err, habits) {
                 if (err) {
                     res.send(err);
                 }
                 else {
-                    res.json(groceries);
+                    res.json(habits);
                 }
             });
         }
@@ -127,6 +128,105 @@ app.delete('/api/groceries/:id', function (req, res) {
 });
 
 
+// ** DAILY LOG ** //
+// Get all daily log entires 
+app.get('/api/logs', function (req, res) {
+
+    console.log("Listing daily log entries ...");
+
+    //use mongoose to get data from the database
+    Log.find(function (err, logs) {
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+
+        res.json(logs); // return all daily entries in JSON format
+    });
+});
+
+// Get one daily entry record
+app.get('/api/logs/:id', function (req, res) {
+
+    console.log("List one specific daily log entry ...");
+    
+    //use mongoose to get a single log entry from the database
+    Log.find({ _id: req.params.id }, function (err, logs) {
+
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+
+        res.json(logs); // return the habit in JSON format
+    });
+});
+
+// Create a new daily log entry
+app.post('/api/logs', function (req, res) {
+
+    console.log("Creating a new daily log entry ...");
+
+    Log.create({
+        name: req.body.name,
+        date: req.body.date,
+        done: false
+    }, function (err, log) {
+        if (err) {
+            res.send(err);
+        }
+
+        // create and return all the log entries
+        Log.find(function (err, logs) {
+            if (err)
+                res.send(err);
+            res.json(logs);
+        });
+    });
+
+});
+
+// Update a daily log entry 
+app.put('/api/logs/:id', function (req, res) {
+    const log = {
+        name: req.body.name,
+        date: req.body.date
+    };
+    console.log("Updating the daily log entry ... ", req.params.id);
+    Log.update({_id: req.params.id}, log, function (err, raw) {
+        if (err) {
+            res.send(err);
+        }
+        res.send(raw);
+    });
+});
+
+
+// Delete a daily log entry
+app.delete('/api/logs/:id', function (req, res) {
+    console.log("Deleting a daily log entry ... ", req.params.id);
+    Log.findOneAndRemove({   //updated from .remove - https://stackoverflow.com/questions/50283081/mongodb-error-cannot-use-retryable-writes-with-limit-0
+        _id: req.params.id
+    }, function (err, log) {
+        if (err) {
+            console.error("Error deleting the log entry ", err);
+        }
+        else {
+            Log.find(function (err, logs) {
+                if (err) {
+                    res.send(err);
+                }
+                else {
+                    res.json(logs);
+                }
+            });
+        }
+    });
+});
+
+
+
+
 // Start app and listen on port 8080  
 app.listen(process.env.PORT || 8080);
-console.log("Grocery server listening on port  - ", (process.env.PORT || 8080));
+console.log("My Habit Stacker server listening on port  - ", (process.env.PORT || 8080));

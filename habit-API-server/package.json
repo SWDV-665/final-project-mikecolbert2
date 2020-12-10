@@ -1,5 +1,5 @@
 {
-  "name": "groceries-server",
+  "name": "myhabitstacker-server",
   "version": "0.0.1",
   "description": "Groceries server using Mongoose",
   "main": "server.js",
