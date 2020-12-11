@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { AlertController } from 'ionic-angular';
 //import { empty } from 'rxjs/Observer';
 import { HabitServiceProvider } from '../../providers/habit-service/habit-service';
 import { StreakDataServiceProvider } from '../../providers/streak-data-service/streak-data-service';
+import { ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-daily',
@@ -19,6 +19,7 @@ export class DailyPage {
 
   constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
+    public toastCtrl: ToastController,
     public habitService: HabitServiceProvider,
     public streakService: StreakDataServiceProvider) {
 
@@ -69,7 +70,12 @@ export class DailyPage {
     // compare the two dates
     if (last_entry_date.valueOf() === today.valueOf()) {
       // the dates are the same
-      console.log('already logged this today')
+      
+      const toast = this.toastCtrl.create({
+        message: " You have already logged today.",
+        duration: 3000
+      });   
+      toast.present();
 
     }
 
@@ -92,19 +98,23 @@ export class DailyPage {
         'habit_name': habit.habit_name,
         'last_completed_date': new Date()
       }
-      console.log('logged with difference of 1 day.')
-      console.log(log_habit)
       this.streakService.addDaily(log_habit);
+
+      const toast = this.toastCtrl.create({
+        message: " Great job!!.",
+        duration: 3000
+      });   
+      toast.present();
 
     }
 
 
     // the difference between teh dates is > 1 day
     // fill in the missing days
-    // MWC - figure out how to stop one day short to add todays as the last entry
-
     if (difference > 1) {
-      for (let i = 0; i < difference - 1; i++) {
+      // stop one day short so you can add the log from today after
+      // you have entered the missing days
+      for (let i = 0; i < difference - 1; i++) { 
 
         const missing_date = date1.setDate(date1.getDate() + 1); //create missing date using date1 + 1 day
 
@@ -112,23 +122,24 @@ export class DailyPage {
           'habit_name': '',
           'last_completed_date': missing_date
         }
-        console.log(missing_log);
-        console.log('difference is > 1 - catch up')
-
-        //add the missing_date element to the database
+        //add the missing_date element(s) to the database
         this.streakService.addDaily(missing_log)
         this.loadLatestHabitCompleted()
       }
 
+      // now add the current log to the database
       let log_habit = {
         'habit_name': habit.habit_name,
         'last_completed_date': new Date()
       }
-      console.log('logged todays habit in this catch up scenario.')
-      console.log(log_habit)
       this.streakService.addDaily(log_habit);
       this.loadLatestHabitCompleted()
 
+      const toast = this.toastCtrl.create({
+        message: " It looks like you have missed some days. Keep going!!",
+        duration: 3000
+      });   
+      toast.present();
     }
   }
 

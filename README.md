@@ -1,6 +1,10 @@
 ## Final Project - Habit TrackerMike Colbert
 ### Mike Colbert
 
+https://ionicframework.com/docs/v3/
+
+https://ionicframework.com/docs/v3/ionicons/
+
 ### ** Code and Features**
 - [x] ~~Add custom styling and theming to the application.~~
 - [x] ~~My habit page - .brand not working.~~
