@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-//import { empty } from 'rxjs/Observer';
 import { HabitServiceProvider } from '../../providers/habit-service/habit-service';
 import { StreakDataServiceProvider } from '../../providers/streak-data-service/streak-data-service';
 import { ToastController } from 'ionic-angular';
@@ -41,19 +40,26 @@ export class DailyPage {
   }
 
   didToday(habit) {
-    console.log('inside didToday')
-    /*
+
     // if there are no entries in the streaks table
-    if (this.latest.length === undefined ) {
-      console.log('inside if stmt for empty table')
+    if (!this.latest.last_completed_date ) {
       let log_habit = {
         'habit_name': habit.habit_name,
         'last_completed_date': new Date()
       }
-      console.log('no entries in streaks table')
+      
+      const toast = this.toastCtrl.create({
+        message: " You are off to a great start!",
+        duration: 3000
+      });   
+      toast.present();
+
       this.streakService.addDaily(log_habit);
+      this.loadLatestHabitCompleted()
+      
+      return
     }
-    */
+    
 
     
     // have you already logged the habit today
@@ -82,15 +88,11 @@ export class DailyPage {
     //calculate the difference between the the last entry and today
     let date1 = new Date(this.latest.last_completed_date);  // date of the last record
     let date2 = new Date();  // date today
-    console.log(date1);
-    console.log(date2);
-
+    
     //if difference between days is > 0, there is a missing date
     const difference = this.dateDiffInDays(date1, date2);
-    console.log(difference);
 
-
-
+    
     // the difference between the dates = 1 day
     // log the habit today
     if (difference == 1) {
@@ -99,6 +101,7 @@ export class DailyPage {
         'last_completed_date': new Date()
       }
       this.streakService.addDaily(log_habit);
+      this.loadLatestHabitCompleted()
 
       const toast = this.toastCtrl.create({
         message: " Great job!!.",

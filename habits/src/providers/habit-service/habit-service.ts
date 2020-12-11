@@ -19,7 +19,7 @@ export class HabitServiceProvider {
 
   private dataChangeSubject: Subject<boolean>;
 
-  baseURL = "http://localhost:8080";
+  baseURL = "https://myhabitstacker-api-server.herokuapp.com";
 
   constructor(public http: HttpClient) {
     console.log('Hello HabitServiceProvider Provider');
