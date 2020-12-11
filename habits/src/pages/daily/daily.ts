@@ -25,12 +25,16 @@ export class DailyPage {
     habitService.dataChanged$.subscribe((dataChanged: boolean) => {
       this.loadHabits();
     });
+    streakService.dataChanged$.subscribe((dataChanged: boolean) => {
+      this.streakService.getDailyEntries();
+      this.streakService.getLatestEntry();
+    });
   }
 
   ionViewDidLoad() {
     this.loadHabits();
-    this.loadLatestHabitCompleted();
     this.streakService.getDailyEntries();
+    this.loadLatestHabitCompleted();
   }
 
   loadHabits() {
@@ -39,10 +43,12 @@ export class DailyPage {
       error => this.errorMessage = <any>error);
   }
 
-  didToday(habit) {
-
-    // if there are no entries in the streaks table
-    if (!this.latest.last_completed_date ) {
+   didToday(habit) {
+    let first_entry = new Date(this.latest.last_completed_date);
+    console.log(first_entry)
+    console.log(first_entry.toString().length)
+    console.log(typeof first_entry)
+    if (first_entry.toString().length === 12) {
       let log_habit = {
         'habit_name': habit.habit_name,
         'last_completed_date': new Date()
@@ -55,13 +61,11 @@ export class DailyPage {
       toast.present();
 
       this.streakService.addDaily(log_habit);
-      this.loadLatestHabitCompleted()
-      
-      return
-    }
-    
+     // this.streakService.getDailyEntries();
+     this.loadLatestHabitCompleted()      
 
-    
+    }
+     
     // have you already logged the habit today
     // get the last_completed_date from the most recent daily log entry
     // set the time to all zeroes
@@ -162,7 +166,6 @@ export class DailyPage {
     this.streakService.getLatestEntry().subscribe(
       latest => this.latest = latest,
       error => this.errorMessage = <any>error);
-    //console.log(this.latest)
   }
 
 }

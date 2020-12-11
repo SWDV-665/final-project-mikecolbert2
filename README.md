@@ -18,7 +18,7 @@ https://ionicframework.com/docs/v3/ionicons/
 
 - [x] Refactor code in streak service to make it more modular
 
-- [ ] Ability to fill in the missing days with the special icon
+- [x] Ability to fill in the missing days with the special icon
 
 Comment code:
 - [x] ~~streak service
@@ -35,8 +35,8 @@ Comment code:
 ### **Migrate to Heroku & Mongo**
 - [x] ~~Build API server~~
 - [x] ~~Make a MongoDB login and collection for this project~~
-- [ ] Upload the server to Heroku
-- [ ] Set the Heroku environment variable to use the MongoDB cloud server
+- [x] Upload the server to Heroku
+- [x] Set the Heroku environment variable to use the MongoDB cloud server
 
 ### **Needed API endpoints**
 - [x] Cut over the data services for habits
@@ -46,7 +46,7 @@ Comment code:
 - [x] list all habits
 - [ ] ~~list an individual habit~~ (not yet needed)
 
-- [ ] Add Toast for "already logged this today" and "successfully logged this today"
+- [x] Add Toast for "already logged this today" and "successfully logged this today"
 - [x] Cut over the data services for daily logging
 - [x] add to log when a habit is complete
 - [x] list all data in log

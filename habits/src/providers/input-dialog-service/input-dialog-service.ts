@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AlertController } from 'ionic-angular';
 import { HabitServiceProvider } from '../../providers/habit-service/habit-service';
+import { StreakDataServiceProvider } from '../../providers/streak-data-service/streak-data-service';
 
 /*
   Generated class for the InputDialogServiceProvider provider.
@@ -12,7 +13,7 @@ import { HabitServiceProvider } from '../../providers/habit-service/habit-servic
 @Injectable()
 export class InputDialogServiceProvider {
 
-  constructor(public alertCtrl: AlertController, public habitService: HabitServiceProvider) {
+  constructor(public alertCtrl: AlertController, public habitService: HabitServiceProvider, public streakService: StreakDataServiceProvider) {
     console.log('Hello InputDialogServiceProvider Provider');
   }
 
