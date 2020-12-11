@@ -19,7 +19,7 @@ export class HabitServiceProvider {
 
   private dataChangeSubject: Subject<boolean>;
 
-  baseURL = "http://localhost:8080"
+  baseURL = "http://localhost:8080";
 
   constructor(public http: HttpClient) {
     console.log('Hello HabitServiceProvider Provider');
@@ -61,6 +61,7 @@ export class HabitServiceProvider {
 
   addHabit(habit){
     console.log("service provider - add new habit ...")
+    console.log(habit)
     this.http.post(this.baseURL + "/api/habits", habit).subscribe(res => {
       this.habits = res;
       this.dataChangeSubject.next(true); 

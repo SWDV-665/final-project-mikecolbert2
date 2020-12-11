@@ -1,0 +1,186 @@
+if (i === difference - 2) { //added -1 to keep date2 from overflowing the array length and returning undefined
+          break;
+        } 
+ 
+ 
+ 
+ 
+        // the dates are not the same
+      // fill in missing dates
+      console.log(this.daily_entries.length)
+      for (let i = 0; i < this.daily_entries.length; i++) {
+
+        if (i === this.daily_entries.length - 1) { //added -1 to keep date2 from overflowing the array length and returning undefined
+          break;
+        }
+      
+        
+
+        if (difference > 1) {
+          const missing_date = date1.setDate(date1.getDate() + 1); //create missing date using date1 + 1 day
+          // build element for array with the missing date
+
+          let missing_log = {
+            'habit_name': '',
+            'last_completed_date': missing_date
+          }
+          console.log(missing_log);
+          console.log('difference is > 1 - catch up')
+          console.log('how do we stop short and add today')
+
+          //add the missing_date element to the database
+          //this.streakService.addDaily(missing_log)
+        }
+
+        if (difference == 1) {
+          let log_habit = {
+            'habit_name': habit.habit_name,
+            'last_completed_date': new Date()
+          }
+          //this.streakService.addDaily(log_habit);
+          console.log(log_habit)
+          console.log('difference is one - push up todays log entry')
+
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Missing dates
+
+    for (var i = 0; i < this.daily_entries.length; i++) {
+      if (i === this.daily_entries.length - 1) { //added -1 to keep date2 from overflowing the array length and returning undefined
+        break;
+      }
+      const date1 = new Date(this.daily_entries[i].date);
+      const date2 = new Date(this.daily_entries[i + 1].date); 
+      
+      //if difference between days is > 1, there is a missing date
+      const difference = this.dateDiffInDays(date1, date2);
+     
+      if (difference > 1) {
+        const missingDate = date1.setDate(date1.getDate() + 1); //create missing date using date1 + 1 day
+        // build element for array with the missing date
+        const missing_date = {
+          'habit': '',
+          'date': missingDate
+        }
+        //add the missing_date element to the database
+        this.addDaily(missing_date)
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+      let i = 0;
+      while (last_entry_date.valueOf() < today.valueOf()){
+        console.log('inside loop')
+        let last_entry = new Date(this.latest.last_completed_date);
+        console.log('last_entry:' + last_entry);
+        let missing_date = last_entry.setDate(last_entry.getDate() + i); //create missing date using date1 + 1 day
+        console.log('missing: ' + missing_date);
+        const missing_daily = {
+          'habit_name': '',
+          'last_completed_date': missing_date
+        }
+        this.streakService.addDaily(missing_daily);
+        let last_entry_date = missing_date;
+        i++
+
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+      //if difference between days is > 1, there is a missing date
+      let difference = this.dateDiffInDays(date1, next_day);
+      console.log(difference)
+       
+        if (difference > 1) {
+          // build element for array with the missing date
+
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+       
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      console.log('logged this');
+
+      let date_of_last_log = this.latest.last_completed_date;
+      console.log(date_of_last_log);
+
+      let date1 = new Date(date_of_last_log); // set equal to the date of the last record
+      let date2 = new Date(date_of_last_log); // set equal to the date of the last record
+      //let next_day = new Date(date2.setDate(date2.getDate() + 1)); //increment the date by one day
+        
+      console.log('date1: ' + date1);
+      
+
+      let i = 0;
+      while (new Date(date2.setDate(date2.getDate() + i)) !=  today){
+
+        let day = new Date(date2.setDate(date2.getDate() + i + 1));
+
+        
+
+        i++
+        console.log(i)
+        
+        console.log('added - done')

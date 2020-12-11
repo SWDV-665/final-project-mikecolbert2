@@ -13,22 +13,20 @@
   </h3>
 
   <ion-list no-lines *ngFor="let habit of habits; let i = index">
-    <p>Click the button each day after you complete your new habit!</p>
-
-    <button ion-button large full color="secondary" (click)="didToday(habit)">{{ habit.name }} </button>
+    <p>Click the button each day after <br> you complete your new habit!</p><br>
+    <p>
+    <button ion-button large full color="secondary" (click)="didToday(habit)">{{ habit.habit_name }} </button></p>
+<br><br>
+    <h5 text-center >
+      You last completed this on</h5> <h4 class="brand">{{latest.last_completed_date | date: 'fullDate'}}</h4>
+    
 
   </ion-list>
 
-  <br><br><br>
 
-  <h4 text-center *ngIf="habits.length > 0">
-    Your streak is <i>X</i> days.
-  </h4>
+
+
   
-  <ion-fab bottom right>
-    <button ion-fab mini (click)="makeData()">
-      <ion-icon name="checkmark"></ion-icon>
-    </button>
-  </ion-fab>
+
 
 </ion-content>

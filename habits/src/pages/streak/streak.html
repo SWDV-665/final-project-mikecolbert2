@@ -6,22 +6,22 @@
 
 <ion-content padding>
 
-  <h3 text-center *ngIf="loadDailyEntries().length === 0">
+  <h3 text-center *ngIf="daily_entries.length === 0">
     <p>Visit <span class="brand">Daily Check-in</span> for your first check-in.</p>
   </h3>
 
   <ion-list>
-    <ion-item no-lines inset *ngFor="let entry of loadDailyEntries(); let i = index">
+    <ion-item no-lines inset *ngFor="let entry of daily_entries; let i = index">
       
       <!-- date displayed with Angular, date pipe-->
-      <span class="skipped-day" *ngIf="!entry.habit">
-        {{ entry.date | date: 'shortDate' }} -- 
+      <span class="skipped-day" *ngIf="!entry.habit_name">
+        {{ entry.last_completed_date | date: 'shortDate' }} -- 
         <img class="skipped-icon" src="../../assets/icon/delete.png">
       </span>
       
-      <span class="habit-day" *ngIf="entry.habit">
-        {{ entry.date | date: 'shortDate' }} --
-        {{entry.habit}}
+      <span class="habit-day" *ngIf="entry.habit_name">
+        {{ entry.last_completed_date | date: 'shortDate' }} --
+        {{entry.habit_name}}
       </span>
     </ion-item>
   </ion-list>

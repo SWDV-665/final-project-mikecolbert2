@@ -16,7 +16,7 @@ export class InputDialogServiceProvider {
     console.log('Hello InputDialogServiceProvider Provider');
   }
 
-  showPrompt(habit?, index?) {
+  showPrompt( habit?, index?) {
     const prompt = this.alertCtrl.create({
       title: habit ? 'Edit Habit' : 'Add Habit',
       //message: habit ? "Please edit this habit ... " : "Please enter a new habit ...", //commented for alert text if empty
@@ -24,7 +24,11 @@ export class InputDialogServiceProvider {
         {
           name: 'name',
           placeholder: 'Name',
-          value: habit ? habit.name : null // if there is a habit, show the habit name, else null
+          value: habit ? habit.habit_name : null // if there is a habit, show the habit name, else null
+        },
+        {
+          name: 'date',
+          value: habit ? habit.start_date : new Date(),
         },
       ],
       buttons: [
@@ -48,6 +52,7 @@ export class InputDialogServiceProvider {
               this.habitService.editHabit(habit, index);
             }
             else {
+              console.log(habit)
               this.habitService.addHabit(habit);
             }
 

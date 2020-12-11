@@ -8,13 +8,13 @@
   <p>Developed by Mike Colbert for SWDV665, 2W 20/FA2.</p>
   <br><br><br>
 
-  <h3>I want to be better, <span class="brand">one new habit </span> at a time...</h3>
+  <h3>I want to be better, one new habit at a time...</h3>
   <br>
 
-  <ion-list inset>
+  <ion-list inset *ngFor="let habit of habits; let i = index">
     <ion-item-sliding *ngFor="let habit of habits; let i = index">
       <ion-item>
-        <h1> {{ habit.name }} </h1>
+        <h1> <span class="brand">{{ habit.habit_name }}</span> </h1>
       </ion-item>
       <ion-item-options sliding="left">
         <button (click)="editHabit(habit, i)" ion-button color="dark" icon-start>
@@ -25,6 +25,10 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
+<br><br>
+    <h5 text-center>
+      Started this habit on <br><h4>{{habit.start_date | date: 'fullDate'}}</h4>
+    </h5>
   </ion-list>
 
   <ion-fab left bottom>

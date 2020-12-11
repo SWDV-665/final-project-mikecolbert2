@@ -2,7 +2,7 @@
 ### Mike Colbert
 
 ### ** Code and Features**
-- [x] ~~Add custom styling and themeing to the application.~~
+- [x] ~~Add custom styling and theming to the application.~~
 - [x] ~~My habit page - .brand not working.~~
 - [x] ~~Format Habit page and clean up text copy.~~
 - [x] ~~Configure Habit to use a {{title}}~~
@@ -12,10 +12,12 @@
 - [x] ~~Daily Check-in tab - add hyphen~~
 - [x] ~~Format Check-in page and text copy.~~
 
-- [ ] Refactor code in streak service to make it more modular
+- [x] Refactor code in streak service to make it more modular
+
+- [ ] Ability to fill in the missing days with the special icon
 
 Comment code:
-- [ ] streak service
+- [x] ~~streak service
 - [x] ~~habit service~~
 - [x] ~~inputDialog service~~
  - other .ts and .html files
@@ -33,28 +35,30 @@ Comment code:
 - [ ] Set the Heroku environment variable to use the MongoDB cloud server
 
 ### **Needed API endpoints**
-- [ ] Cut over the data services for habits
-- [ ] add new habits
-- [ ] delete a habit
-- [ ] edit a habit
-- [ ] list all habits
-- [ ] list an individual habit
+- [x] Cut over the data services for habits
+- [x] add new habits
+- [x] delete a habit
+- [x] edit a habit
+- [x] list all habits
+- [ ] ~~list an individual habit~~ (not yet needed)
 
-- [ ] Cut over the data services for daily logging
-- [ ] add to log when a habit is complete
-- [ ] list all data in log
-- [ ] list a single item in a log
-- [ ] edit an item in a log
-- [ ] delete an item from a log
+- [ ] Add Toast for "already logged this today" and "successfully logged this today"
+- [x] Cut over the data services for daily logging
+- [x] add to log when a habit is complete
+- [x] list all data in log
+- [x] ~~list the latest entry in log~~
+- [ ] ~~edit an item in a log~~ (not yet needed)
+- [ ] ~~delete an item from a log~~ (not yet needed)
 
 ### **Final Cleanup**
-- [ ] Remove FAB from Daily Check-in
-- [ ] Remove makeData() from streak-data-service.ts
-- [ ] Remove makeData() from daily.ts
+- [x] Remove FAB from Daily Check-in
+- [x] Remove makeData() from streak-data-service.ts
+- [x] Remove makeData() from daily.ts
 
 ### **Future Improvements**
+- [ ] Move from alert box to modal for inputDialogPrompt - validate, readonly
 - [ ] Work on counting streak days on check-in page?
-- [ ] Ability to edit streak list with datepicker?
+- [ ] Ability to edit streak list item with datepicker?
 - [ ] Ability to delete a streak item?
 
 - [ ] Add abiltiy to share streak days?

@@ -10,15 +10,25 @@ import { StreakDataServiceProvider } from '../../providers/streak-data-service/s
 export class StreakPage {
 
   title = "My Habit Stacker";
+  daily_entries = [];
+  errorMessage: string;
+  current_habit: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public streakService: StreakDataServiceProvider) {
+                streakService.dataChanged$.subscribe((dataChanged: boolean) => {
+                  this.loadDailyEntries();
+                });
+  }
 
+  ionViewDidLoad() {
+    this.loadDailyEntries();
   }
 
   loadDailyEntries(){
-    console.log('inside streak.ts')
-    return this.streakService.getDailyEntries();
+    this.streakService.getDailyEntries().subscribe(
+      daily_entries => this.daily_entries = daily_entries,
+      error => this.errorMessage = <any>error);
   }
 
 }

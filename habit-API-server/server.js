@@ -25,12 +25,13 @@ app.use(function (req, res, next) {
 
 // Models
 var Habit = mongoose.model('Habit', {
-    name: String
+    habit_name: String,
+    start_date: Date
 });
 
 var Log = mongoose.model('DailyLog', {
-    name: String,
-    date: Date
+    habit_name: String,
+    last_completed_date: Date
 });
 
 // ** HABITS ** //
@@ -73,7 +74,8 @@ app.post('/api/habits', function (req, res) {
     console.log("Creating a new habit ...");
 
     Habit.create({
-        name: req.body.name,
+        habit_name: req.body.name,
+        start_date: req.body.date,
         done: false
     }, function (err, habit) {
         if (err) {
@@ -93,7 +95,7 @@ app.post('/api/habits', function (req, res) {
 // Update a habit 
 app.put('/api/habits/:id', function (req, res) {
     const habit = {
-        name: req.body.name
+        habit_name: req.body.name
     };
     console.log("Updating the habit ... ", req.params.id);
     Habit.update({_id: req.params.id}, habit, function (err, raw) {
@@ -144,13 +146,13 @@ app.get('/api/logs', function (req, res) {
     });
 });
 
-// Get one daily entry record
-app.get('/api/logs/:id', function (req, res) {
+// Get last daily entry record
+app.get('/api/logs/latest-entry', function (req, res) {
 
-    console.log("List one specific daily log entry ...");
+    console.log("List latest daily log entry ...");
     
     //use mongoose to get a single log entry from the database
-    Log.find({ _id: req.params.id }, function (err, logs) {
+    Log.findOne( {}, {}, {sort: { 'last_completed_date' : -1 } }, function (err, logs) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
@@ -165,10 +167,12 @@ app.get('/api/logs/:id', function (req, res) {
 app.post('/api/logs', function (req, res) {
 
     console.log("Creating a new daily log entry ...");
+    console.log(req.body.habit_name)
+    console.log(req.body.last_completed_date)
 
     Log.create({
-        name: req.body.name,
-        date: req.body.date,
+        habit_name: req.body.habit_name,
+        last_completed_date: req.body.last_completed_date,
         done: false
     }, function (err, log) {
         if (err) {
@@ -188,8 +192,8 @@ app.post('/api/logs', function (req, res) {
 // Update a daily log entry 
 app.put('/api/logs/:id', function (req, res) {
     const log = {
-        name: req.body.name,
-        date: req.body.date
+        habit_name: req.body.name,
+        last_completed_date: req.body.date
     };
     console.log("Updating the daily log entry ... ", req.params.id);
     Log.update({_id: req.params.id}, log, function (err, raw) {
