@@ -16,9 +16,9 @@ https://ionicframework.com/docs/v3/ionicons/
 - [x] ~~Daily Check-in tab - add hyphen~~
 - [x] ~~Format Check-in page and text copy.~~
 
-- [x] Refactor code in streak service to make it more modular
+- [x] ~~Refactor code in streak service to make it more modular~~
 
-- [x] Ability to fill in the missing days with the special icon
+- [x] ~~Ability to fill in the missing days with the special icon~~
 
 Comment code:
 - [x] ~~streak service
@@ -35,29 +35,29 @@ Comment code:
 ### **Migrate to Heroku & Mongo**
 - [x] ~~Build API server~~
 - [x] ~~Make a MongoDB login and collection for this project~~
-- [x] Upload the server to Heroku
-- [x] Set the Heroku environment variable to use the MongoDB cloud server
+- [x] ~~Upload the server to Heroku~~
+- [x] ~~Set the Heroku environment variable to use the MongoDB cloud server~~
 
 ### **Needed API endpoints**
-- [x] Cut over the data services for habits
-- [x] add new habits
-- [x] delete a habit
-- [x] edit a habit
-- [x] list all habits
+- [x] ~~Cut over the data services for habits~~
+- [x] ~~add new habits~~
+- [x] ~~delete a habit~~
+- [x] ~~edit a habit~~
+- [x] ~~list all habits~~
 - [ ] ~~list an individual habit~~ (not yet needed)
 
-- [x] Add Toast for "already logged this today" and "successfully logged this today"
-- [x] Cut over the data services for daily logging
-- [x] add to log when a habit is complete
-- [x] list all data in log
+- [x] ~~Add Toast for "already logged this today" and "successfully logged this today"~~
+- [x] ~~Cut over the data services for daily logging~~
+- [x] ~~add to log when a habit is complete~~
+- [x] ~~list all data in log~~
 - [x] ~~list the latest entry in log~~
 - [ ] ~~edit an item in a log~~ (not yet needed)
 - [ ] ~~delete an item from a log~~ (not yet needed)
 
 ### **Final Cleanup**
-- [x] Remove FAB from Daily Check-in
-- [x] Remove makeData() from streak-data-service.ts
-- [x] Remove makeData() from daily.ts
+- [x] ~~Remove FAB from Daily Check-in~~
+- [x] ~~Remove makeData() from streak-data-service.ts~~
+- [x] ~~Remove makeData() from daily.ts~~
 
 ### **Future Improvements**
 - [ ] Move from alert box to modal for inputDialogPrompt - validate, readonly
